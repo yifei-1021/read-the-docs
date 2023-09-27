@@ -6,7 +6,6 @@ Documentation for ``banksy_py`` package
 ``initialize_banksy``: This is the main Function that initializes the BANKSY Object as a dictionary
 
 .. code-block:: python
-
 initialize_banksy(adata: anndata.AnnData, \ 
            coord_keys: Tuple[str],  \ 
            num_neighbours: int = 15,  \ 

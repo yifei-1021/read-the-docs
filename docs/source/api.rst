@@ -6,17 +6,17 @@ Documentation for ``banksy_py`` package
 ``initialize_banksy``: This is the main Function that initializes the BANKSY Object as a dictionary
 
 .. code-block:: python
-initialize_banksy(adata: anndata.AnnData,  
-                      coord_keys: Tuple[str],  
-                      num_neighbours: int = 15,  
-                      nbr_weight_decay: str = 'scaled_gaussian',   
-                      max_m: int = 1, 
-                      plt_edge_hist: bool = True, 
-                      plt_nbr_weights: bool = True,  
-                      plt_agf_angles: bool = False,  
-                      plt_theta: bool = True ) -> dict: 
+    initialize_banksy(adata: anndata.AnnData,  
+    coord_keys: Tuple[str],   
+    num_neighbours: int = 15,   
+    nbr_weight_decay: str = 'scaled_gaussian',   
+    max_m: int = 1, 
+    plt_edge_hist: bool = True, 
+    plt_nbr_weights: bool = True,  
+    plt_agf_angles: bool = False,  
+    plt_theta: bool = True ) -> dict: 
 
-        
+end
     **Input Args**:
         ``adata (AnnData)``: AnnData object containing the data matrix.
 

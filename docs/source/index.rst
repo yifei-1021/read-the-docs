@@ -1,4 +1,4 @@
-Welcome to BANKSY\_py's documentation (test)!
+Welcome to BANKSY\_py's documentation!
 ===================================
 
 **BANKSY** is a method for clustering spatial transcriptomic data by augmenting the transcriptomic profile of each cell with features representing the transcriptomes of its spatial neighbors. **BANKSY** is a robust, fast and scalable algorithm for both cell-typing clustering and domain segmentation. 

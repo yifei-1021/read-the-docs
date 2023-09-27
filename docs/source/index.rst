@@ -1,9 +1,11 @@
 Welcome to BANKSY\_py's documentation (test)!
 ===================================
 
-**BANKSY** is a method for clustering spatial transcriptomic data by augmenting the transcriptomic profile of each cell with an average of the transcriptomes of its spatial neighbors. **BANKSY** is a scalable clustering method for both cell-typing and domain segmentation. 
+**BANKSY** is a method for clustering spatial transcriptomic data by augmenting the transcriptomic profile of each cell with features representing the transcriptomes of its spatial neighbors. **BANKSY** is a robust, fast and scalable algorithm for both cell-typing clustering and domain segmentation. 
 
-This documentation provides examples for using the python version of BANKSY, which is hosted at `Banksy_py <https://github.com/prabhakarlab/Banksy_py/tree/main>`_. 
+%an average 
+
+This documentation provides examples for using the Python version of BANKSY, which is hosted at `Banksy_py <https://github.com/prabhakarlab/Banksy_py/tree/main>`_. 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
 

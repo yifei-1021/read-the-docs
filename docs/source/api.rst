@@ -69,7 +69,7 @@ Functions under **utils.umap_pca**
 -------
 
 **pca_umap**: ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
-    '''
+
     PCA_UMAP applies dimensionality reduction via PCA (which is used for clustering), optionally applies UMAP to cluster the groups. Note that UMAP is used for visualization.
 
     **Args**:

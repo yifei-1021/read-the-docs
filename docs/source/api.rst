@@ -80,7 +80,7 @@ Documentation for ``banksy_py`` package
 
          |__ ``lambda_param``
 
-             |__ ``adata ``
+             |__ ``adata``
    
      ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
          
@@ -135,7 +135,7 @@ Documentation for ``banksy_py`` package
 
             |__ ``lambda_param``
 
-                |__ ``anndata  ``
+                |__ ``adata``
 
       ``partition_seed (int)``: Seed used for mclust partition
           

@@ -6,7 +6,8 @@ Usage
 Quick installation via Anaconda (recommended)
 ------------
 
-To use the python-implementation of Banksy, we recommend setting up a ``conda`` environment and installing the prequisite packages. 
+To use the python-implementation of ``Banksy``, we recommend setting up a ``conda`` environment and installing the prequisite packages. 
+
 .. code-block:: console
 
    (base) $ conda create --name banksy

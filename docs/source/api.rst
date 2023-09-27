@@ -12,8 +12,7 @@ Functions under banksy.initialize_banksy
 
     This is the main Function that initializes the BANKSY Object as a dictionary
         
-    Input Args:
-
+    **Input Args**:
         ``adata`` (AnnData): AnnData object containing the data matrix.
 
         ``coord_keys`` (Tuple[str]): A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
@@ -25,8 +24,7 @@ Functions under banksy.initialize_banksy
         ``max_m`` (int): Maximum order of azimuthal gabor filter, we use a default of 1.
     
         
-    Optional Args:
-
+    **Optional Args**:
         ``plt_edge`` (bool): Visualize the edge histogram*
     
         ``plt_weight`` (bool): Visualize the weights graph
@@ -35,7 +33,7 @@ Functions under banksy.initialize_banksy
     
         ``plt_theta`` (bool): Visualize angles around a random cell
 
-    Returns:
+    **Returns**:
         ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
 
@@ -45,8 +43,7 @@ Functions under banksy.embed_banksy
 
     Creates the banksy matrices with the set hyperparameters given. Stores the computed banksy matrices in the ``banksy_dict`` object, also returns the *last* ``banksy matrix`` that was computed
         
-    Input Args:
-
+    **Input Args**:
         ``adata`` (AnnData): AnnData object containing the data matrix
 
         ``banksy_dict`` (dict): The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
@@ -56,8 +53,7 @@ Functions under banksy.embed_banksy
         ``max_m`` (int): The maximum order of the AGF transform. 
     
         
-    Optional Args:
-
+    **Optional Args**:
         ``plot_std`` (bool): Visualize the standard  deivation per gene in the dataset, Defaults to ``False``.
 
         ``save_matrix`` (bool): Option to save all ``banksy_matrix`` generated as a ``csv`` file named ``f"adata_{nbr_weight_decay}_l{lambda_param}_{time_str}.csv"``. Defaults to ``False``.
@@ -68,7 +64,7 @@ Functions under banksy.embed_banksy
     
         ``plt_theta`` (bool): Visualize angles around a random cell
 
-    Returns:
+    **Returns**:
         ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
         ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.

@@ -3,14 +3,16 @@ Usage
 
 .. _installation:
 
-Installation
+Quick installation
 ------------
 
-To use Lumache, first install it using pip:
+To use the python-implementation of Banksy, we recommend setting up a `conda` environment and installing the prequisite packages.
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (base) $ conda create --name banksy
+   (base) $ conda activate banksy
+   (banksy) $ conda install -c conda-forge scanpy python-igraph leidenalg
 
 Creating recipes
 ----------------

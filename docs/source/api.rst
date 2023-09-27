@@ -13,6 +13,7 @@ Functions under banksy.initialize_banksy
     This is the main Function that initializes the BANKSY Object as a dictionary
         
     Input Args:
+
         ``adata`` (AnnData): AnnData object containing the data matrix.
 
         ``coord_keys`` (Tuple[str]): A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
@@ -25,6 +26,7 @@ Functions under banksy.initialize_banksy
     
         
     Optional Args:
+
         ``plt_edge`` (bool): Visualize the edge histogram*
     
         ``plt_weight`` (bool): Visualize the weights graph
@@ -44,27 +46,32 @@ Functions under banksy.embed_banksy
     Creates the banksy matrices with the set hyperparameters given. Stores the computed banksy matrices in the ``banksy_dict`` object, also returns the *last* ``banksy matrix`` that was computed
         
     Input Args:
+
         ``adata`` (AnnData): AnnData object containing the data matrix
-        ``banksy_dict`` (Tuple[str]): A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+
+        ``banksy_dict`` (dict): The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
     
-        ``num_neighbours`` (int) a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
+        ``lambda_list`` (List[int]): A list of ``lambda`` parameters that the users can specify. We recommend ``lambda = 0.2`` for cell-typing and ``lambda = 0.8`` for domain segemntation. 
     
-        ``nbr_weight_decay`` (str): Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
-    
-        ``max_m`` (int): Maximum order of azimuthal gabor filter, we use a default of 1.
+        ``max_m`` (int): The maximum order of the AGF transform. 
     
         
     Optional Args:
-        ``plt_edge`` (bool): Visualize the edge histogram*
+
+        ``plot_std`` (bool): Visualize the standard  deivation per gene in the dataset, Defaults to ``False``.
+
+        ``save_matrix`` (bool): Option to save all ``banksy_matrix`` generated as a ``csv`` file named ``f"adata_{nbr_weight_decay}_l{lambda_param}_{time_str}.csv"``. Defaults to ``False``.
+
+        ``save_folder`` (bool): Path to folder for saving the ``banksy_matrix``. Defaults to ``./data``.
     
-        ``plt_weight`` (bool): Visualize the weights graph
-    
-        ``plt_agf_weights`` (bool): Visualize the AGF weights
+        ``variance_balance`` (bool): Balance the variance between the ``gene-expression``, ``neighboorhood`` and ``AGF`` matrices. Defaults to False.
     
         ``plt_theta`` (bool): Visualize angles around a random cell
 
     Returns:
         ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+
+        ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
 
 .. autosummary::

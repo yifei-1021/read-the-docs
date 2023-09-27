@@ -9,15 +9,15 @@ Documentation for ``banksy_py`` package
    
    
       **Input Args**:
-      ``adata (AnnData)``: AnnData object containing the data matrix.
-      
-      ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
-      
-      ``num_neighbours (int)`` a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
-      
-      ``nbr_weight_decay (str)``: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
-      
-      ``max_m (int)``: Maximum order of azimuthal gabor filter, we use a default of 1.
+         ``adata (AnnData)``: AnnData object containing the data matrix.
+         
+         ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+         
+         ``num_neighbours (int)`` a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
+         
+         ``nbr_weight_decay (str)``: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
+         
+         ``max_m (int)``: Maximum order of azimuthal gabor filter, we use a default of 1.
       
       
       **Optional Args**:

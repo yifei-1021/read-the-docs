@@ -16,10 +16,8 @@ Contents
 
 .. toctree::
 
-   usage
-   :maxdepth: 2
-   :caption: Contents:
-
+   installation
    notebooks/slideseqv1_analysis
-
+   notebooks/slideseqv2_analysis
+   notebooks/starmap_analysis
    api

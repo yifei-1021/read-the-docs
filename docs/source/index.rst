@@ -9,7 +9,7 @@ how to :ref:`installation` the project.
 
 .. note::
 
-   We are still actively developing the python version of banksy `Banksy_py <https://github.com/prabhakarlab/Banksy_py/tree/main>`_.`. For the ``R`` library, refer to `Banksy <https://github.com/prabhakarlab/Banksy>`_.
+   We are still actively developing the python version of banksy `Banksy_py <https://github.com/prabhakarlab/Banksy_py/tree/main>`_.. For the ``R`` library, refer to `Banksy <https://github.com/prabhakarlab/Banksy>`_.
 
 Contents
 --------

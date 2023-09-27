@@ -271,8 +271,7 @@ Documentation for ``banksy_py`` package
          
          ``savefig (bool)``: To save figures (containing both ``refined`` and ``unrefined`` clusters) generated from banksy in ``output_folder``.
          
-         ``annotation_key (str)``: The key in whicb the ground truth annotations are accessed under 
-                ``adata.obs[annotation_key]``. If no ground truth is present, then set ``annotation_key = None``.
+         ``annotation_key (str)``: The key in which the ground truth annotations are accessed under ``adata.obs[annotation_key]``. If no ground truth is present, then set ``annotation_key = None``.
          
          ``verbose (False)``: Whether to print steps during ``refine``.
 

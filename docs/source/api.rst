@@ -17,8 +17,6 @@ initialize_banksy(adata: anndata.AnnData, \
            plt_agf_angles: bool = False,  \
            plt_theta: bool = True ) -> dict: \
 
--------
-    
         
     **Input Args**:
         ``adata (AnnData)``: AnnData object containing the data matrix.

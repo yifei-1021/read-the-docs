@@ -38,4 +38,4 @@ To run ``mclust`` (a Gaussian-mixture modelling based clustering method), instal
 
 Get started with some examples
 ----------------
-Users can get started by trying out a few example tutorials here: :doc:`slideseqv1_analysis`.
+Users can get started by trying out a few example tutorials here: :doc:`slideseqv1_analysis`, :doc:`slideseqv2_analysis` and :doc:`starmap_analysis`.

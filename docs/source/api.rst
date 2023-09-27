@@ -2,9 +2,9 @@ Documentation for ``banksy_py`` package
 ===================================
 
 ``banksy.initialize_banksy`` module
-
-**initialize_banksy**: This is the main Function that initializes the BANKSY Object as a dictionary
 -------
+**initialize_banksy**: This is the main Function that initializes the BANKSY Object as a dictionary
+
 .. code-block:: python
 
     pygments_style = 'sphinx'

@@ -1,8 +1,8 @@
-Functions used in ``banksy_py`` package
+Documentation ``banksy_py``
 ===================================
 
 
-Under ``banksy.initialize_banksy`` module
+``banksy.initialize_banksy`` module
 -------
 **initialize_banksy**: ``initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str], num_neighbours: int = 15, nbr_weight_decay: str = 'scaled_gaussian', max_m: int = 1,plt_edge_hist: bool = True, plt_nbr_weights: bool = True,plt_agf_angles: bool = False, plt_theta: bool = True ) -> dict:`` 
 
@@ -33,7 +33,7 @@ Under ``banksy.initialize_banksy`` module
         ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
 
-Under **banksy.embed_banksy** module
+``banksy.embed_banksy`` module
 -------
 **generate_banksy_matrix**: ``generate_banksy_matrix(adata: anndata.AnnData, banksy_dict: dict, lambda_list: list, max_m: int, plot_std: bool = False, save_matrix: bool = False, save_folder: str = './data', variance_balance: bool = False, verbose: bool = True) -> Tuple[dict, np.ndarray]`` 
 
@@ -65,7 +65,7 @@ Under **banksy.embed_banksy** module
 
         ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
-Under **utils.umap_pca** module
+``utils.umap_pca`` module
 -------
 
 **pca_umap**: ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
@@ -86,7 +86,7 @@ Under **utils.umap_pca** module
 
         ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
-Under **banksy.cluster_methods** module
+``banksy.cluster_methods`` module
 -------
 
 **run_Leiden_partition**: ``run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict:`` 
@@ -145,7 +145,7 @@ Under **banksy.cluster_methods** module
                 ``"adata": banksy_dict[nbr_weight_decay][lambda_param]["adata"]`` - original ``AnnData`` object
             ``}``
 
-Under **banksy.plot_banksy** module
+``banksy.plot_banksy`` module
 -------
 **plot_results**: ``plot_results(results_df: pd.DataFrame, weights_graph: Union[csc_matrix, csr_matrix], c_map: str,  match_labels: bool, coord_keys: Tuple[str], max_num_labels: int = 20, save_fig: bool = False, save_fullfig: bool = False, save_path: str = None, plot_dot_plot: bool = False, plot_heat_map: bool = False, n_genes: int = 5, color_list: List[str] = [], dataset_name: str = "", main_figsize: Tuple[float, float] = (15, 9),**kwargs) -> None:``
     

@@ -6,7 +6,7 @@ Usage
 Quick installation via Anaconda (recommended)
 ------------
 
-To use the python-implementation of Banksy, we recommend setting up a `conda` environment and installing the prequisite packages.
+To use the python-implementation of Banksy, we recommend setting up a ``conda`` environment and installing the prequisite packages.
 
 .. code-block:: console
 
@@ -17,7 +17,7 @@ To use the python-implementation of Banksy, we recommend setting up a `conda` en
 Additional Packages (Optional)
 ----------------
 
-By default, we use the leiden-algorithm implemented via the `leidenalg` as the community detection algorithm. Alternatively, users may be interested in using `louvain` and `mclust`.
+By default, we use the leiden-algorithm implemented via the ``leidenalg`` as the community detection algorithm. Alternatively, users may be interested in using ``louvain`` and ``mclust``.
 
 
 

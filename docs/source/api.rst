@@ -1,5 +1,7 @@
-API
+Useful functions
 ===
+
+
 
 .. autosummary::
    :toctree: generated

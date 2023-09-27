@@ -17,4 +17,9 @@ Contents
 .. toctree::
 
    usage
+   :maxdepth: 2
+   :caption: Contents:
+
+   notebooks/slideseqv1_analysis
+
    api

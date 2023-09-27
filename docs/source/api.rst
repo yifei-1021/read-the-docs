@@ -75,8 +75,11 @@ Documentation for ``banksy_py`` package
 
     **Args**:
      ``banksy_dict (dict)``: The processing dictionary containing:
+
       |__ ``nbr weight decay``
+
          |__ ``lambda_param``
+
              |__ ``adata ``
    
      ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
@@ -127,9 +130,12 @@ Documentation for ``banksy_py`` package
 
      Args:
       ``banksy_dict (dict)``: The processing dictionary containing:
-      |__ ``nbr weight decay``
-         |__ ``lambda_param``
-             |__ ``anndata  ``
+
+         |__ ``nbr weight decay``
+
+            |__ ``lambda_param``
+
+                |__ ``anndata  ``
 
       ``partition_seed (int)``: Seed used for mclust partition
           

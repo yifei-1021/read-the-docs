@@ -86,6 +86,55 @@ Functions under **utils.umap_pca**
 
         ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
+Functions under **banksy.cluster_methods**
+-------
+
+**run_Leiden_partition**: ``run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict:`` 
+
+    Main driver function that runs Leiden partition across the banksy matrices stored in banksy_dict. See the original leiden package: https://leidenalg.readthedocs.io/en/stable/intro.html
+
+    **Arg**s:
+        banksy_dict (dict): The processing dictionary containing:
+        |__ nbr weight decay
+          |__ lambda_param
+            |__ anndata  
+
+        ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
+            
+        ``num_nn (int)``: Number of nearest neighrbours for Leiden-parition. Also refered to as ``k_expr`` in our manuscript, default = 50.
+
+        ``num_iterations (int)``: Number of iterations in which the paritition is conducted, default = -1:
+
+        ``partition_seed (int)``: seed for partitioning (Leiden) algorithm, default = 1234.
+        
+        ``match_labels (bool)``: Determines if labels are kept consistent across different hyperparameter settings,  default = True.
+
+        ``annotations``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+
+    Optional args (kwargs):
+        Other parameters to the Leiden Partition:
+
+        shared_nn_max_rank (int), default = 3
+
+        shared_nn_min_shared_nbrs (int), default = 5
+    
+    Returns:
+        results_df (pd.DataFrame): A pandas dataframe containing the results of the partition.
+
+        The results can be accessed via: 
+            ``
+            param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}" # A unique id for current hyperparameters
+            results_df[param_str] = {
+                "decay": nbr_weight_decay, ### Type of weight decay function used
+                "lambda_param": lambda_param, ### 
+                "num_pcs":pca_dim,
+                "resolution":resolution,
+                "num_labels": label.num_labels,
+                "labels": label,
+                "adata": banksy_dict[nbr_weight_decay][lambda_param]["adata"]
+            }``
+
+
 .. autosummary::
    :toctree: generated
 

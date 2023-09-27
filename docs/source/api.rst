@@ -144,7 +144,7 @@ Documentation for ``banksy_py`` package
       ``num_labels (int)``: Number of labels required for ``mclust`` model.
 
      Returns:
-         ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition
+      ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition
 
 ``banksy.plot_banksy`` module
 -------
@@ -178,7 +178,56 @@ Documentation for ``banksy_py`` package
        
        **Returns**:
         The main figure for visualization using banksy
-    
+
+
+``banksy.run_banksy`` module
+-------
+**run_banksy_multiparam**: Combines the (1) ``generate_banksy_matrix``, (2) ``pca_umap``, (3) ``run_cluster_partition`` and (4) ``plot_banksy`` functions to run banksy for multiple parameters (``lambda``, ``resolution`` and ``pca_dims``), and generate its figure in one step. Note the user still has to initalize the ``banksy_dict`` via ``initialize_banksy``.
+
+   ``run_banksy_multiparam(adata: anndata.AnnData, banksy_dict: dict,lambda_list: List[int],resolutions: List[int],color_list: Union[List, str],max_m: int,filepath: str, key: Tuple[str], match_labels: bool = False, pca_dims: List[int] = [20, ], savefig: bool = True, annotation_key: str = "cluster_name", max_labels: int = None, variance_balance: bool = False, cluster_algorithm: str = 'leiden', partition_seed: int = 1234, add_nonspatial: bool = True, **kwargs) ``
+
+     **Args**:
+      ``adata (AnnData)``: AnnData object containing the data matrix
+      
+      ``banksy_dict (dict)``: The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
+      
+      ``lambda_list (List[int])``: A list of ``lambda`` parameters that the users can specify. We recommend ``lambda = 0.2`` for cell-typing and ``lambda = 0.8`` for domain segemntation.
+      
+      ``resolutions (List[int])``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
+      
+      ``color_list (Union[List, str])``: Color map or list to plot figure, e.g., ``tab20``
+      
+      ``max_m (int)``: The maximum order of the AGF transform. 
+      
+      ``key (str)`` a.k.a ``coord_keys``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+      
+      ``filepath (str)``: file path for saving the output figure/files. default file path is 'data'
+          
+      ``annotation_key (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+
+
+      **Optional args**:
+      ``match_labels (bool)``: Whether to match labels between runs of ``banksy`` using different hyperparameters.
+      
+      ``pca_dims (List of integers)``: A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
+      
+      ``max_labels (int)``: Maximum number of labels used for ``mclust`` or ``leiden``. For ``leiden``, if ``max_label`` is set and ``resolution`` is left as an empty ``list``, it will try to search for a resolution that matches the same number of ``max_num_labels``.
+      
+      ``savefig (bool)``: To save the figures generated from ``banksy``, default = True
+      
+      ``partition_seed (int)``: Seed used for Clustering algorithm, default = 1234
+      
+      ``variance_balance (bool)``: Balance the variance between the ``gene-expression``, ``neighboorhood`` and ``AGF`` matrices. defaults to False.
+      
+      ``cluster_algorithm (str)``: Type of clustering algorithm to use: either ``leiden`` or ``mclust``. default to ``leiden``
+
+      ``add_nonspatial (bool)``: Whether to add results for ``nonspatial`` clustering, defaults to True
+
+     **Returns**:
+      ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partitions
+   
+
+
 ``utils.umap_pca`` module
 -------
 

@@ -69,10 +69,10 @@ Documentation for ``banksy_py`` package
 ``utils.umap_pca`` module
 -------
 
-**pca_umap**: ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
+**pca_umap**: Applies dimensionality reduction via ``PCA`` (which is used for clustering), optionally applies ``UMAP`` to cluster the groups. Note that ``UMAP`` is used for visualization.
 
-    Applies dimensionality reduction via PCA (which is used for clustering), optionally applies UMAP to cluster the groups. Note that UMAP is used for visualization.
-
+ ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
+    
     **Args**:
         ``banksy_dict (dict)``: The processing dictionary containing info about the banksy matrices.
     
@@ -90,9 +90,9 @@ Documentation for ``banksy_py`` package
 ``banksy.cluster_methods`` module
 -------
 
-**run_Leiden_partition**: ``run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict:`` 
+**run_Leiden_partition**: Main driver function that runs Leiden partition across the banksy matrices stored in banksy_dict. See the original leiden package: https://leidenalg.readthedocs.io/en/stable/intro.html
 
-    Main driver function that runs Leiden partition across the banksy matrices stored in banksy_dict. See the original leiden package: https://leidenalg.readthedocs.io/en/stable/intro.html
+   ``run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict:`` 
 
     **Args**:
         ``banksy_dict (dict)``: The processing dictionary containing:

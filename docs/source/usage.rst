@@ -3,7 +3,7 @@ Usage
 
 .. _installation:
 
-Quick installation
+Quick installation via Anaconda (recommended)
 ------------
 
 To use the python-implementation of Banksy, we recommend setting up a `conda` environment and installing the prequisite packages.
@@ -14,10 +14,13 @@ To use the python-implementation of Banksy, we recommend setting up a `conda` en
    (base) $ conda activate banksy
    (banksy) $ conda install -c conda-forge scanpy python-igraph leidenalg
 
-Creating recipes
+Additional Packages (Optional)
 ----------------
 
-To retrieve a list of random ingredients,
+By default, we use the leiden-algorithm implemented via the `leidenalg` as the community detection algorithm. Alternatively, users may be interested in using `louvain` and `mclust`.
+
+
+
 you can use the ``lumache.get_random_ingredients()`` function:
 
 .. autofunction:: lumache.get_random_ingredients

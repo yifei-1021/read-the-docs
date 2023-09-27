@@ -66,27 +66,6 @@ Documentation for ``banksy_py`` package
 
      ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
-``utils.umap_pca`` module
--------
-
-**pca_umap**: Applies dimensionality reduction via ``PCA`` (which is used for clustering), optionally applies ``UMAP`` to cluster the groups. Note that ``UMAP`` is used for visualization.
-
- ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
-    
-    **Args**:
-     ``banksy_dict (dict)``: The processing dictionary containing info about the banksy matrices.
- 
-     ``pca_dims (List of integers)``: A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
-
-     ``plt_remaining_var (bool)``: generate a scree plot of remaining variance. Defaults to False.
-
-     ``add_umap (bool)``: Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
-
-    **Returns**:       
-     ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
-
-     ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
-
 ``banksy.cluster_methods`` module
 -------
 
@@ -145,6 +124,25 @@ Documentation for ``banksy_py`` package
              ``"adata": banksy_dict[nbr_weight_decay][lambda_param]["adata"]`` - original ``AnnData`` object
          ``}``
 
+**run_mclust_partition**: Main driver function that runs ``mclust`` partition across the banksy matrices stored in banksy_dict. Note that we need to specify the number of clusters  ``num_labels`` for mclust, which is applicable for datasets in we know the number of clusters to look for (e.g., DLPFC).  This is based on ``STAGATE``'s implementation of the ``mclust`` package.  see https://github.com/zhanglabtools/STAGATE/blob/main/STAGATE/utils.py
+
+ ``run_mclust_partition(banksy_dict: dict, partition_seed: int = 1234, annotations = None, num_labels: int = None, **kwargs  ) -> dict:``
+
+        Args:
+         ``banksy_dict (dict)``: The processing dictionary containing:
+         |__ ``nbr weight decay``
+            |__ ``lambda_param``
+                |__ ``anndata  ``
+
+         ``partition_seed (int)``: Seed used for mclust partition
+             
+         ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+
+         ``num_labels (int)``: Number of labels required for ``mclust`` model.
+
+        Returns:
+            results_df (pd.DataFrame): A pandas dataframe containing the results of the partition
+
 ``banksy.plot_banksy`` module
 -------
 **plot_results**: Plot and visualize the results of Banksy, including the full-figure.
@@ -178,6 +176,26 @@ Documentation for ``banksy_py`` package
        **Returns**:
         The main figure for visualization using banksy
     
+``utils.umap_pca`` module
+-------
+
+**pca_umap**: Applies dimensionality reduction via ``PCA`` (which is used for clustering), optionally applies ``UMAP`` to cluster the groups. Note that ``UMAP`` is used for visualization.
+
+ ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
+    
+    **Args**:
+     ``banksy_dict (dict)``: The processing dictionary containing info about the banksy matrices.
+ 
+     ``pca_dims (List of integers)``: A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
+
+     ``plt_remaining_var (bool)``: generate a scree plot of remaining variance. Defaults to False.
+
+     ``add_umap (bool)``: Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
+
+    **Returns**:       
+     ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+
+     ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
 
 .. autosummary::

@@ -75,12 +75,9 @@ Documentation for ``banksy_py`` package
 
     **Args**:
      ``banksy_dict (dict)``: The processing dictionary containing:
-   
-     |__ nbr weight decay
-   
-       |__ lambda_param
-   
-         |__ anndata  
+      |__ ``nbr weight decay``
+         |__ ``lambda_param``
+             |__ ``adata ``
    
      ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
          
@@ -128,20 +125,20 @@ Documentation for ``banksy_py`` package
 
  ``run_mclust_partition(banksy_dict: dict, partition_seed: int = 1234, annotations = None, num_labels: int = None, **kwargs  ) -> dict:``
 
-        Args:
-         ``banksy_dict (dict)``: The processing dictionary containing:
-         |__ ``nbr weight decay``
-            |__ ``lambda_param``
-                |__ ``anndata  ``
+     Args:
+      ``banksy_dict (dict)``: The processing dictionary containing:
+      |__ ``nbr weight decay``
+         |__ ``lambda_param``
+             |__ ``anndata  ``
 
-         ``partition_seed (int)``: Seed used for mclust partition
-             
-         ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+      ``partition_seed (int)``: Seed used for mclust partition
+          
+      ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
 
-         ``num_labels (int)``: Number of labels required for ``mclust`` model.
+      ``num_labels (int)``: Number of labels required for ``mclust`` model.
 
-        Returns:
-            results_df (pd.DataFrame): A pandas dataframe containing the results of the partition
+     Returns:
+         ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition
 
 ``banksy.plot_banksy`` module
 -------

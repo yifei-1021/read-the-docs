@@ -6,14 +6,14 @@ Installation
 Quick installation via Anaconda (recommended)
 ------------
 
-To use the python-implementation of ``Banksy``, we recommend setting up a ``conda`` environment and installing the prequisite packages. 
+To use ``Banksy_py``, we recommend setting up a ``conda`` environment and installing the prequisite packages, then cloning this repository.
 
 .. code-block:: console
 
    (base) $ conda create --name banksy
    (base) $ conda activate banksy
    (banksy) $ conda install -c conda-forge scanpy python-igraph leidenalg
-   (banksy) $ git clone -c conda-forge scanpy python-igraph leidenalg
+   (banksy) $ git clone https://github.com/prabhakarlab/Banksy_py.git
 
 Alternatively, users can install the prerequisite packages using `pip`. 
 
@@ -35,13 +35,6 @@ To run ``mclust`` (a Gaussian-mixture modelling based clustering method), instal
    (banksy) $ conda install -c conda-forge rpy2
    (banksy) $ conda install -c conda-forge r-mclust
 
-Clone the BANKSY source code 
-----------------
-Retrieve the BANKSY source code from github:
-
-.. code-block:: console
-
-   (banksy) $ git clone https://github.com/prabhakarlab/Banksy_py.git
 
 Get started with some examples
 ----------------

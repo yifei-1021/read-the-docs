@@ -2,6 +2,8 @@ API
 ===
 
 .. autosummary::
-   :toctree: generated
-
-   lumache
+   :toctree::   
+      :maxdepth: 2
+      :caption: Contents:
+   
+      notebooks/Example 1

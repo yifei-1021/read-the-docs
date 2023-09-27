@@ -7,6 +7,8 @@ Documentation for ``banksy_py`` package
 
 .. py:function:
    initialize_banksy(adata: anndata.AnnData,  coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict:`` 
+
+   A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
    
    
        **Input Args**:

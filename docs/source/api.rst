@@ -29,7 +29,7 @@ Documentation for ``banksy_py`` package
          
          ``plt_theta (bool)``: Visualize angles around a random cell
          
-         **Returns**:
+      **Returns**:
          ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
    
 
@@ -40,31 +40,31 @@ Documentation for ``banksy_py`` package
    
  ``generate_banksy_matrix(adata: anndata.AnnData, banksy_dict: dict, lambda_list: list, max_m: int, plot_std: bool = False, save_matrix: bool = False, save_folder: str = './data', variance_balance: bool = False, verbose: bool = True) -> Tuple[dict, np.ndarray]`` 
 
-    **Input Args**:
-     ``adata (AnnData)``: AnnData object containing the data matrix
-
-     ``banksy_dict (dict)``: The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
- 
-     ``lambda_list (List[int])``: A list of ``lambda`` parameters that the users can specify. We recommend ``lambda = 0.2`` for cell-typing and ``lambda = 0.8`` for domain segemntation. 
- 
-     ``max_m (int)``: The maximum order of the AGF transform. 
-    
+      **Input Args**:
+         ``adata (AnnData)``: AnnData object containing the data matrix
+         
+         ``banksy_dict (dict)``: The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
+         
+         ``lambda_list (List[int])``: A list of ``lambda`` parameters that the users can specify. We recommend ``lambda = 0.2`` for cell-typing and ``lambda = 0.8`` for domain segemntation. 
+         
+         ``max_m (int)``: The maximum order of the AGF transform. 
+      
         
-    **Optional Args**:
+      **Optional Args**:
         ``plot_std (bool)``: Visualize the standard  deivation per gene in the dataset, Defaults to ``False``.
-   
+      
         ``save_matrix (bool)``: Option to save all ``banksy_matrix`` generated as a ``csv`` file named ``f"adata_{nbr_weight_decay}_l{lambda_param}_{time_str}.csv"``. Defaults to ``False``.
-   
+      
         ``save_folder (bool)``: Path to folder for saving the ``banksy_matrix``. Defaults to ``./data``.
-    
+      
         ``variance_balance (bool)``: Balance the variance between the ``gene-expression``, ``neighboorhood`` and ``AGF`` matrices. Defaults to False.
-    
+      
         ``plt_theta (bool)``: Visualize angles around a random cell
-
-    **Returns**:
-     ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
-
-     ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
+      
+      **Returns**:
+        ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+      
+        ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
 ``banksy.cluster_methods`` module
 -------
@@ -94,56 +94,56 @@ Documentation for ``banksy_py`` package
          
          ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
             
-       **Optional args**:
-           ``shared_nn_max_rank (int)``, default = 3
+      **Optional args**:
+        ``shared_nn_max_rank (int)``, default = 3
       
-           ``shared_nn_min_shared_nbrs (int)``, default = 5
+        ``shared_nn_min_shared_nbrs (int)``, default = 5
       
-       Returns:
-           ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition.
+      **Returns**:
+        ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition.
       
-           The results can be accessed via: 
-               
-               ``param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}"`` # A unique id for current hyperparameters
+        The results can be accessed via: 
+            
+            ``param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}"`` # A unique id for current hyperparameters
       
-               ``results_df[param_str] = {``
+            ``results_df[param_str] = {``
       
-                   ``"decay": nbr_weight_decay,`` - Type of weight decay function used
+                ``"decay": nbr_weight_decay,`` - Type of weight decay function used
       
-                   ``"lambda_param": lambda_param,`` - Lambda Parameter specified
+                ``"lambda_param": lambda_param,`` - Lambda Parameter specified
       
-                   ``"num_pcs":pca_dim,`` - number of PCs specified
+                ``"num_pcs":pca_dim,`` - number of PCs specified
       
-                   ``"resolution":resolution,`` - Resolution specified for clustering
+                ``"resolution":resolution,`` - Resolution specified for clustering
       
-                   ``"num_labels": label.num_labels``, - Number of Labels generated by banksy
+                ``"num_labels": label.num_labels``, - Number of Labels generated by banksy
       
-                   ``"labels": label,`` - Labels generated by Banksy
+                ``"labels": label,`` - Labels generated by Banksy
       
-                   ``"adata": banksy_dict[nbr_weight_decay][lambda_param]["adata"]`` - original ``AnnData`` object
-               ``}``
+                ``"adata": banksy_dict[nbr_weight_decay][lambda_param]["adata"]`` - original ``AnnData`` object
+            ``}``
 
 **run_mclust_partition**: Main driver function that runs ``mclust`` partition across the banksy matrices stored in banksy_dict. Note that we need to specify the number of clusters  ``num_labels`` for mclust, which is applicable for datasets in we know the number of clusters to look for (e.g., DLPFC).  This is based on ``STAGATE``'s implementation of the ``mclust`` package.  see https://github.com/zhanglabtools/STAGATE/blob/main/STAGATE/utils.py
 
  ``run_mclust_partition(banksy_dict: dict, partition_seed: int = 1234, annotations = None, num_labels: int = None, **kwargs  ) -> dict:``
 
-     Args:
+      **Args**:
          ``banksy_dict (dict)``: The processing dictionary containing:
-   
+      
             |__ ``nbr weight decay``
-   
+      
                |__ ``lambda_param``
-   
+      
                    |__ ``adata``
-   
+      
          ``partition_seed (int)``: Seed used for mclust partition
              
          ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
-   
+      
          ``num_labels (int)``: Number of labels required for ``mclust`` model.
-
-     Returns:
-      ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition
+      
+      **Returns**:
+         ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition
 
 ``banksy.plot_banksy`` module
 -------
@@ -151,32 +151,32 @@ Documentation for ``banksy_py`` package
     
    ``plot_results(results_df: pd.DataFrame, weights_graph: Union[csc_matrix, csr_matrix], c_map: str,  match_labels: bool, coord_keys: Tuple[str], max_num_labels: int = 20, save_fig: bool = False, save_fullfig: bool = False, save_path: str = None, plot_dot_plot: bool = False, plot_heat_map: bool = False, n_genes: int = 5, color_list: List[str] = [], dataset_name: str = "", main_figsize: Tuple[float, float] = (15, 9),**kwargs) -> None``
    
-       **Args**:
-           ``results_df (pd.DataFrame)``: DataFrame containing all the results after running ``leiden`` clustering algorithm.
-   
-           ``weight_graph (csc_matrix)``: weight_graph object in a dictionary
-   
-           ``max_num_labels (int)``: Maximum number of labels
-   
-           ``match_labels (bool)``: If the match labels options was previously indicated. THe outpug figures will match the clusters generated from BANKSY using different hypeparameters.
-   
-           ``max_num_labels (int)``: Number of labels used to match labels (if ``match_labels=True``).
-   
-           ``coord_keys (Tuple(str))``: keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm``. 
+      **Args**:
+        ``results_df (pd.DataFrame)``: DataFrame containing all the results after running ``leiden`` clustering algorithm.
       
-          **Optional args**:
-              ``save_fig (bool)``: Save the figure containing clusters generated by BANKSY. All figure are saved via the name ``f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}".png``
-              
-              ``save_fullfig (bool)``: Save full figure, including UMAP and PCA plots along with clusters.
+        ``weight_graph (csc_matrix)``: weight_graph object in a dictionary
       
-              ``c_map (str)``: Colour map used for clustering, such as ``tab20``
+        ``max_num_labels (int)``: Maximum number of labels
       
-              ``save_all_h5ad (bool)``: to save a copy of the temporary anndata object as ``.h5ad`` format
+        ``match_labels (bool)``: If the match labels options was previously indicated. THe outpug figures will match the clusters generated from BANKSY using different hypeparameters.
       
-              ``file_path (str)``: file path for saving the output figure/files. default file path is 'data'
-          
-       **Returns**:
-           The main figure for visualization using banksy
+        ``max_num_labels (int)``: Number of labels used to match labels (if ``match_labels=True``).
+      
+        ``coord_keys (Tuple(str))``: keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm``. 
+      
+      **Optional args**:
+        ``save_fig (bool)``: Save the figure containing clusters generated by BANKSY. All figure are saved via the name ``f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}".png``
+        
+        ``save_fullfig (bool)``: Save full figure, including UMAP and PCA plots along with clusters.
+      
+        ``c_map (str)``: Colour map used for clustering, such as ``tab20``
+      
+        ``save_all_h5ad (bool)``: to save a copy of the temporary anndata object as ``.h5ad`` format
+      
+        ``file_path (str)``: file path for saving the output figure/files. default file path is 'data'
+       
+      **Returns**:
+        The main figure for visualization using banksy
 
 
 ``banksy.run_banksy`` module
@@ -185,7 +185,7 @@ Documentation for ``banksy_py`` package
 
    ``run_banksy_multiparam(adata: anndata.AnnData, banksy_dict: dict,lambda_list: List[int],resolutions: List[int],color_list: Union[List, str],max_m: int,filepath: str, key: Tuple[str], match_labels: bool = False, pca_dims: List[int] = [20, ], savefig: bool = True, annotation_key: str = "cluster_name", max_labels: int = None, variance_balance: bool = False, cluster_algorithm: str = 'leiden', partition_seed: int = 1234, add_nonspatial: bool = True, **kwargs) ``
 
-     **Args**:
+      **Args**:
          ``adata (AnnData)``: AnnData object containing the data matrix
          
          ``banksy_dict (dict)``: The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
@@ -203,8 +203,8 @@ Documentation for ``banksy_py`` package
          ``filepath (str)``: file path for saving the output figure/files. default file path is 'data'
              
          ``annotation_key (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
-
-
+      
+      
       **Optional args**:
          ``match_labels (bool)``: Whether to match labels between runs of ``banksy`` using different hyperparameters.
          
@@ -219,12 +219,12 @@ Documentation for ``banksy_py`` package
          ``variance_balance (bool)``: Balance the variance between the ``gene-expression``, ``neighboorhood`` and ``AGF`` matrices. defaults to False.
          
          ``cluster_algorithm (str)``: Type of clustering algorithm to use: either ``leiden`` or ``mclust``. default to ``leiden``
-   
+      
          ``add_nonspatial (bool)``: Whether to add results for ``nonspatial`` clustering, defaults to True
-
-     **Returns**:
+      
+      **Returns**:
          ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partitions
-   
+
 
 
 ``utils.umap_pca`` module
@@ -234,49 +234,49 @@ Documentation for ``banksy_py`` package
 
  ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
     
-    **Args**:
+      **Args**:
         ``banksy_dict (dict)``: The processing dictionary containing info about the banksy matrices.
-    
+      
         ``pca_dims (List of integers)``: A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
-   
+      
         ``plt_remaining_var (bool)``: generate a scree plot of remaining variance. Defaults to False.
-   
+      
         ``add_umap (bool)``: Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
-
-    **Returns**:       
+      
+      **Returns**:       
         ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
-   
+      
         ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
-
-``utils.refine_clusters`` module
+      
+      ``utils.refine_clusters`` module
 -------
 
 **refine_clusters**:   Function to refine predicted labels based on nearest neighbours
 
    ``refine_clusters(adata: anndata.AnnData, results_df: pd.DataFrame, coord_keys: tuple, color_list: list = spagcn_color, savefig: bool = False, output_folder: str = "",  refine_method: str = "once", refine_iterations: int = 1, annotation_key: str = "manual_annotations", num_neigh: int = 6, verbose: bool = False) -> pd.DataFrame:``
    
-       **Args**:
-         ``adata (AnnData)``: Original anndata object
-         
-         ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
-         
-         ``results_df (pd.DataFrame)``: DataFrame object containing the results from BANKSY
-   
-       **Optional Args**: 
-         ``color_list (list)``; default = spagcn : List in which colors are used to plot the figures. 
-         
-         ``refine_method  ("auto" | "once" | "iter_num" )``: To refine clusters once only or iteratively refine multiple times. If ``auto`` is specified, the refinement procedure completes iteratively until only 0.5% of the nodes are changed. If ``iter_num`` is specified, specify the 'refine_iterations' parameter. default = ``once``.
-         
-         ``num_neigh (int)``: Number of nearest-neighbours the refinement is conducted over, default = 6.
-         
-         ``savefig (bool)``: To save figures (containing both ``refined`` and ``unrefined`` clusters) generated from banksy in ``output_folder``.
-         
-         ``annotation_key (str)``: The key in which the ground truth annotations are accessed under ``adata.obs[annotation_key]``. If no ground truth is present, then set ``annotation_key = None``.
-         
-         ``verbose (False)``: Whether to print steps during ``refine``.
-
-       **Return**:
-         ``results_df (pd.DataFrame)``: DataFrame Object containing the results.
+      **Args**:
+      ``adata (AnnData)``: Original anndata object
+      
+      ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+      
+      ``results_df (pd.DataFrame)``: DataFrame object containing the results from BANKSY
+      
+      **Optional Args**: 
+      ``color_list (list)``; default = spagcn : List in which colors are used to plot the figures. 
+      
+      ``refine_method  ("auto" | "once" | "iter_num" )``: To refine clusters once only or iteratively refine multiple times. If ``auto`` is specified, the refinement procedure completes iteratively until only 0.5% of the nodes are changed. If ``iter_num`` is specified, specify the 'refine_iterations' parameter. default = ``once``.
+      
+      ``num_neigh (int)``: Number of nearest-neighbours the refinement is conducted over, default = 6.
+      
+      ``savefig (bool)``: To save figures (containing both ``refined`` and ``unrefined`` clusters) generated from banksy in ``output_folder``.
+      
+      ``annotation_key (str)``: The key in which the ground truth annotations are accessed under ``adata.obs[annotation_key]``. If no ground truth is present, then set ``annotation_key = None``.
+      
+      ``verbose (False)``: Whether to print steps during ``refine``.
+      
+      **Return**:
+      ``results_df (pd.DataFrame)``: DataFrame Object containing the results.
 
 .. autosummary::
    :toctree: generated

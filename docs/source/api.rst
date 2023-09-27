@@ -1,4 +1,4 @@
-Documentation ``banksy_py``
+Documentation for ``banksy_py`` package
 ===================================
 
 

@@ -5,7 +5,7 @@ Welcome to BANKSY\_py's documentation!
 
 
 This documentation provides examples for using the Python version of BANKSY, which is hosted at `Banksy_py <https://github.com/prabhakarlab/Banksy_py/tree/main>`_. 
-Check out the :doc:`usage` section for further information, including
+Check out the :doc:`installation` section for further information, including
 how to :ref:`installation` the project.
 
 .. note::

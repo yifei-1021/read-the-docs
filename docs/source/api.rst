@@ -6,7 +6,7 @@ Documentation for ``banksy_py`` package
 ``initialize_banksy``: This is the main Function that initializes the BANKSY Object as a dictionary
 
 .. code-block:: python
-           initialize_banksy(adata: anndata.AnnData,  
+initialize_banksy(adata: anndata.AnnData,  
                       coord_keys: Tuple[str],  
                       num_neighbours: int = 15,  
                       nbr_weight_decay: str = 'scaled_gaussian',   
@@ -44,10 +44,11 @@ Documentation for ``banksy_py`` package
 
 ``banksy.embed_banksy`` module
 -------
-**generate_banksy_matrix**: ``generate_banksy_matrix(adata: anndata.AnnData, banksy_dict: dict, lambda_list: list, max_m: int, plot_std: bool = False, save_matrix: bool = False, save_folder: str = './data', variance_balance: bool = False, verbose: bool = True) -> Tuple[dict, np.ndarray]`` 
+**generate_banksy_matrix**: Creates the banksy matrices with the set hyperparameters given. Stores the computed banksy matrices in the ``banksy_dict`` object, also returns the *last* ``banksy matrix`` that was computed
 
-    Creates the banksy matrices with the set hyperparameters given. Stores the computed banksy matrices in the ``banksy_dict`` object, also returns the *last* ``banksy matrix`` that was computed
-        
+   
+ ``generate_banksy_matrix(adata: anndata.AnnData, banksy_dict: dict, lambda_list: list, max_m: int, plot_std: bool = False, save_matrix: bool = False, save_folder: str = './data', variance_balance: bool = False, verbose: bool = True) -> Tuple[dict, np.ndarray]`` 
+
     **Input Args**:
         ``adata (AnnData)``: AnnData object containing the data matrix
 

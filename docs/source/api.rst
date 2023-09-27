@@ -6,4 +6,6 @@ API
       :maxdepth: 2
       :caption: Contents:
    
-      notebooks/Example 1
+      notebooks/slideseqv1_analysis.ipynb
+      notebooks/slideseqv2_analysis.ipynb
+      notebooks/starmap_analysis.ipynb

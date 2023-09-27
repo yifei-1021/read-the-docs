@@ -94,7 +94,7 @@ Documentation for ``banksy_py`` package
       
         ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
    
-       **Optional args**: other parameters to the Leiden Partition:
+       **Optional args**:
    
         ``shared_nn_max_rank (int)``, default = 3
    
@@ -129,19 +129,19 @@ Documentation for ``banksy_py`` package
  ``run_mclust_partition(banksy_dict: dict, partition_seed: int = 1234, annotations = None, num_labels: int = None, **kwargs  ) -> dict:``
 
      Args:
-      ``banksy_dict (dict)``: The processing dictionary containing:
-
-         |__ ``nbr weight decay``
-
-            |__ ``lambda_param``
-
-                |__ ``adata``
-
-      ``partition_seed (int)``: Seed used for mclust partition
-          
-      ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
-
-      ``num_labels (int)``: Number of labels required for ``mclust`` model.
+         ``banksy_dict (dict)``: The processing dictionary containing:
+   
+            |__ ``nbr weight decay``
+   
+               |__ ``lambda_param``
+   
+                   |__ ``adata``
+   
+         ``partition_seed (int)``: Seed used for mclust partition
+             
+         ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+   
+         ``num_labels (int)``: Number of labels required for ``mclust`` model.
 
      Returns:
       ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition

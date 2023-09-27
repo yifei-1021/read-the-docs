@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'BANKSY documentation (test)'
-copyright = ''
+copyright = 'Genome Institue of Singapore'
 author = 'Nigel Chou, Yue Yifei'
 
 release = '0.1'

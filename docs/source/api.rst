@@ -253,30 +253,31 @@ Documentation for ``banksy_py`` package
 
 **refine_clusters**:   Function to refine predicted labels based on nearest neighbours
 
-``refine_clusters(adata: anndata.AnnData, results_df: pd.DataFrame, coord_keys: tuple, color_list: list = spagcn_color, savefig: bool = False,output_folder: str = "",  refine_method: str = "once", refine_iterations: int = 1, annotation_key: str = "manual_annotations", num_neigh: int = 6, verbose: bool = False) -> pd.DataFrame:``
-
-    Args:
-        ``adata (AnnData)``: Original anndata object
-
+   ``refine_clusters(adata: anndata.AnnData, results_df: pd.DataFrame, coord_keys: tuple, color_list: list = spagcn_color, savefig: bool = False, output_folder: str = "",  refine_method: str = "once", refine_iterations: int = 1, annotation_key: str = "manual_annotations", num_neigh: int = 6, verbose: bool = False) -> pd.DataFrame:``
+   
+       **Args**:
+         ``adata (AnnData)``: Original anndata object
+         
          ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
-
-        ``results_df (pd.DataFrame)``: DataFrame object containing the results from BANKSY
-
-    Optional Args: 
-        ``color_list (list)``; default = spagcn : List in which colors are used to plot the figures. 
-
-        ``refine_method (str)``("auto" | "once" | "iter_num" ): 
-               To refine clusters once only or iteratively refine multiple times. If ``auto`` is specified, the refinement procedure completes iteratively until only 0.5% of the nodes are changed. If ``iter_num`` is specified, specify the 'refine_iterations' parameter. default = ``once``.
-
-        ``num_neigh (int)`` : Number of nearest-neighbours the refinement is conducted over, default = 6.
-
-        ``savefig (bool)``: To save figure in folder or not.
-
-        ``annotation_key (str)``: The key in whicb the ground truth annotations are accessed under 
+         
+         ``results_df (pd.DataFrame)``: DataFrame object containing the results from BANKSY
+   
+       **Optional Args**: 
+         ``color_list (list)``; default = spagcn : List in which colors are used to plot the figures. 
+         
+         ``refine_method  ("auto" | "once" | "iter_num" )``: To refine clusters once only or iteratively refine multiple times. If ``auto`` is specified, the refinement procedure completes iteratively until only 0.5% of the nodes are changed. If ``iter_num`` is specified, specify the 'refine_iterations' parameter. default = ``once``.
+         
+         ``num_neigh (int)``: Number of nearest-neighbours the refinement is conducted over, default = 6.
+         
+         ``savefig (bool)``: To save figures (containing both ``refined`` and ``unrefined`` clusters) generated from banksy in ``output_folder``.
+         
+         ``annotation_key (str)``: The key in whicb the ground truth annotations are accessed under 
                 ``adata.obs[annotation_key]``. If no ground truth is present, then set ``annotation_key = None``.
-
+         
          ``verbose (False)``: Whether to print steps during ``refine``.
 
+       **Return**:
+         ``results_df (pd.DataFrame)``: DataFrame Object containing the results.
 
 .. autosummary::
    :toctree: generated

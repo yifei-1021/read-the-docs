@@ -148,9 +148,9 @@ Documentation for ``banksy_py`` package
 
 ``banksy.plot_banksy`` module
 -------
-**plot_results**: ``plot_results(results_df: pd.DataFrame, weights_graph: Union[csc_matrix, csr_matrix], c_map: str,  match_labels: bool, coord_keys: Tuple[str], max_num_labels: int = 20, save_fig: bool = False, save_fullfig: bool = False, save_path: str = None, plot_dot_plot: bool = False, plot_heat_map: bool = False, n_genes: int = 5, color_list: List[str] = [], dataset_name: str = "", main_figsize: Tuple[float, float] = (15, 9),**kwargs) -> None:``
+**plot_results**: Plot and visualize the results of Banksy, including the full-figure.
     
-    Plot and visualize the results of Banksy, including the full-figure.
+``plot_results(results_df: pd.DataFrame, weights_graph: Union[csc_matrix, csr_matrix], c_map: str,  match_labels: bool, coord_keys: Tuple[str], max_num_labels: int = 20, save_fig: bool = False, save_fullfig: bool = False, save_path: str = None, plot_dot_plot: bool = False, plot_heat_map: bool = False, n_genes: int = 5, color_list: List[str] = [], dataset_name: str = "", main_figsize: Tuple[float, float] = (15, 9),**kwargs) -> None:
 
     **Args**:
         ``results_df (pd.DataFrame)``: DataFrame containing all the results after running ``leiden`` clustering algorithm.

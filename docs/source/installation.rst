@@ -15,7 +15,7 @@ To use ``Banksy_py``, we recommend setting up a ``conda`` environment and instal
    (banksy) $ conda install -c conda-forge scanpy python-igraph leidenalg
    (banksy) $ git clone https://github.com/prabhakarlab/Banksy_py.git
 
-Alternatively, users can install the prerequisite packages using `pip`. 
+Alternatively, users can install the prerequisite packages using ``pip``. 
 
 Additional Packages (Optional)
 ----------------

@@ -74,26 +74,26 @@ Documentation for ``banksy_py`` package
    ``run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict:`` 
 
       **Args**:
-        ``banksy_dict (dict)``: The processing dictionary containing:
-      
+         ``banksy_dict (dict)``: The processing dictionary containing:
+         
          |__ ``nbr weight decay``
-      
+         
             |__ ``lambda_param``
-      
+         
                 |__ ``adata``
-      
-        ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
+         
+         ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.
             
-        ``num_nn (int)``: Number of nearest neighrbours for Leiden-parition. Also refered to as ``k_expr`` in our manuscript, default = 50.
-      
-        ``num_iterations (int)``: Number of iterations in which the paritition is conducted, default = -1:
-      
-        ``partition_seed (int)``: seed for partitioning (Leiden) algorithm, default = 1234.
-        
-        ``match_labels (bool)``: Determines if labels are kept consistent across different hyperparameter settings,  default = True.
-      
-        ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
-      
+         ``num_nn (int)``: Number of nearest neighrbours for Leiden-parition. Also refered to as ``k_expr`` in our manuscript, default = 50.
+         
+         ``num_iterations (int)``: Number of iterations in which the paritition is conducted, default = -1:
+         
+         ``partition_seed (int)``: seed for partitioning (Leiden) algorithm, default = 1234.
+         
+         ``match_labels (bool)``: Determines if labels are kept consistent across different hyperparameter settings,  default = True.
+         
+         ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+            
        **Optional args**:
            ``shared_nn_max_rank (int)``, default = 3
       

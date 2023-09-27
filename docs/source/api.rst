@@ -95,8 +95,11 @@ Functions under **banksy.cluster_methods**
 
     **Arg**s:
         banksy_dict (dict): The processing dictionary containing:
+
         |__ nbr weight decay
+
           |__ lambda_param
+
             |__ anndata  
 
         ``resolutions``: Resolution of the partition. We recommend users to try to adjust resolutions to match the number of clusters that they need.

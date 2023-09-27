@@ -22,8 +22,7 @@ This is the main Function that initializes the BANKSY Object as a dictionary
     
 Input Args:
     adata (AnnData): AnnData object containing the data matrix
-    
-    coord_keys (Tuple[str]): A
+    coord_keys (Tuple[str]): A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and adata.obs['xy'] is a 2-D numpy array.
 
     num_neighbours or k_geom (int) : The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
 

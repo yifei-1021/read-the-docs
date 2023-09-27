@@ -3,34 +3,34 @@ Documentation for ``banksy_py`` package
 
 ``banksy.initialize_banksy`` module
 -------
-``initialize_banksy``: This is the main Function that initializes the **banksy_dict** object as a dictionary
+**initialize_banksy**: This is the main Function that initializes the **banksy_dict** object as a dictionary
 
-``initialize_banksy(adata: anndata.AnnData,  coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict:`` 
-
-
-    **Input Args**:
-        ``adata (AnnData)``: AnnData object containing the data matrix.
-
-        ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
-    
-        ``num_neighbours (int)`` a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
-    
-        ``nbr_weight_decay (str)``: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
-    
-        ``max_m (int)``: Maximum order of azimuthal gabor filter, we use a default of 1.
-    
-        
-    **Optional Args**:
-        ``plt_edge (bool)``: Visualize the edge histogram*
-    
-        ``plt_weight (bool)``: Visualize the weights graph
-    
-        ``plt_agf_weights (bool)``: Visualize the AGF weights
-    
-        ``plt_theta (bool)``: Visualize angles around a random cell
-
-    **Returns**:
-        ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+   ``initialize_banksy(adata: anndata.AnnData,  coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict:`` 
+   
+   
+       **Input Args**:
+           ``adata (AnnData)``: AnnData object containing the data matrix.
+   
+           ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+       
+           ``num_neighbours (int)`` a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
+       
+           ``nbr_weight_decay (str)``: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
+       
+           ``max_m (int)``: Maximum order of azimuthal gabor filter, we use a default of 1.
+       
+           
+       **Optional Args**:
+           ``plt_edge (bool)``: Visualize the edge histogram*
+       
+           ``plt_weight (bool)``: Visualize the weights graph
+       
+           ``plt_agf_weights (bool)``: Visualize the AGF weights
+       
+           ``plt_theta (bool)``: Visualize angles around a random cell
+   
+       **Returns**:
+           ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
 
 ``banksy.embed_banksy`` module
@@ -150,35 +150,35 @@ Documentation for ``banksy_py`` package
 -------
 **plot_results**: Plot and visualize the results of Banksy, including the full-figure.
     
-``plot_results(results_df: pd.DataFrame, weights_graph: Union[csc_matrix, csr_matrix], c_map: str,  match_labels: bool, coord_keys: Tuple[str], max_num_labels: int = 20, save_fig: bool = False, save_fullfig: bool = False, save_path: str = None, plot_dot_plot: bool = False, plot_heat_map: bool = False, n_genes: int = 5, color_list: List[str] = [], dataset_name: str = "", main_figsize: Tuple[float, float] = (15, 9),**kwargs) -> None``
-
-    **Args**:
-        ``results_df (pd.DataFrame)``: DataFrame containing all the results after running ``leiden`` clustering algorithm.
-
-        ``weight_graph (csc_matrix)``: weight_graph object in a dictionary
-
-        ``max_num_labels (int)``: Maximum number of labels
-
-        ``match_labels (bool)``: If the match labels options was previously indicated. THe outpug figures will match the clusters generated from BANKSY using different hypeparameters.
-
-        ``max_num_labels (int)``: Number of labels used to match labels (if ``match_labels=True``).
-
-        ``coord_keys (Tuple(str))``: keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm``. 
-
-    **Optional args**:
-
-        ``save_fig (bool)``: Save the figure containing clusters generated by BANKSY. All figure are saved via the name ``f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}".png``
-        
-        ``save_fullfig (bool)``: Save full figure, including UMAP and PCA plots along with clusters.
-
-        ``c_map (str)``: Colour map used for clustering, such as ``tab20``
-
-        ``save_all_h5ad (bool)``: to save a copy of the temporary anndata object as ``.h5ad`` format
-
-        ``file_path (str)``: file path for saving the output figure/files. default file path is 'data'
-    
-    **Returns**:
-        The main figure for visualization using banksy
+   ``plot_results(results_df: pd.DataFrame, weights_graph: Union[csc_matrix, csr_matrix], c_map: str,  match_labels: bool, coord_keys: Tuple[str], max_num_labels: int = 20, save_fig: bool = False, save_fullfig: bool = False, save_path: str = None, plot_dot_plot: bool = False, plot_heat_map: bool = False, n_genes: int = 5, color_list: List[str] = [], dataset_name: str = "", main_figsize: Tuple[float, float] = (15, 9),**kwargs) -> None``
+   
+       **Args**:
+           ``results_df (pd.DataFrame)``: DataFrame containing all the results after running ``leiden`` clustering algorithm.
+   
+           ``weight_graph (csc_matrix)``: weight_graph object in a dictionary
+   
+           ``max_num_labels (int)``: Maximum number of labels
+   
+           ``match_labels (bool)``: If the match labels options was previously indicated. THe outpug figures will match the clusters generated from BANKSY using different hypeparameters.
+   
+           ``max_num_labels (int)``: Number of labels used to match labels (if ``match_labels=True``).
+   
+           ``coord_keys (Tuple(str))``: keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm``. 
+   
+       **Optional args**:
+   
+           ``save_fig (bool)``: Save the figure containing clusters generated by BANKSY. All figure are saved via the name ``f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}".png``
+           
+           ``save_fullfig (bool)``: Save full figure, including UMAP and PCA plots along with clusters.
+   
+           ``c_map (str)``: Colour map used for clustering, such as ``tab20``
+   
+           ``save_all_h5ad (bool)``: to save a copy of the temporary anndata object as ``.h5ad`` format
+   
+           ``file_path (str)``: file path for saving the output figure/files. default file path is 'data'
+       
+       **Returns**:
+           The main figure for visualization using banksy
     
 
 

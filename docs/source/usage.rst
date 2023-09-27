@@ -21,13 +21,13 @@ Additional Packages (Optional)
 
 By default, we use the leiden-algorithm implemented via the ``leidenalg`` as the community-detection algorithm. Alternatively, users may be interested in using ``louvain`` and ``mclust``.
 
-For ``louvain``, install additional packages via:
+To run ``louvain`` clustering (another resolution-based clustering algorithm) via ``sc.tl.louvain``, install additional packages via:
 
 .. code-block:: console
 
    (banksy) $ conda install -c conda-forge louvain
 
-you can use the ``lumache.get_random_ingredients()`` function:
+To run ``mclust``, install additional packages via:
 
 .. autofunction:: lumache.get_random_ingredients
 

@@ -96,9 +96,9 @@ Documentation for ``banksy_py`` package
    
        **Optional args**:
    
-        ``shared_nn_max_rank (int)``, default = 3
-   
-        ``shared_nn_min_shared_nbrs (int)``, default = 5
+           ``shared_nn_max_rank (int)``, default = 3
+      
+           ``shared_nn_min_shared_nbrs (int)``, default = 5
     
     Returns:
         ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition.

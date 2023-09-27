@@ -1,7 +1,7 @@
-Usage
+Installation
 =====
 
-.. _installation:
+.. _Prequisite Packages:
 
 Quick installation via Anaconda (recommended)
 ------------
@@ -13,6 +13,7 @@ To use the python-implementation of ``Banksy``, we recommend setting up a ``cond
    (base) $ conda create --name banksy
    (base) $ conda activate banksy
    (banksy) $ conda install -c conda-forge scanpy python-igraph leidenalg
+   (banksy) $ git clone -c conda-forge scanpy python-igraph leidenalg
 
 Alternatively, users can install the prerequisite packages using `pip`. 
 
@@ -27,19 +28,17 @@ To run ``louvain`` clustering (another resolution-based clustering algorithm) vi
 
    (banksy) $ conda install -c conda-forge louvain
 
-To run ``mclust``, install additional packages via:
+To run ``mclust`` (a Gaussian-mixture modelling based clustering method), install additional packages via:
 
-.. autofunction:: lumache.get_random_ingredients
+.. code-block:: console
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
+   (banksy) $ conda install -c conda-forge rpy2
+   (banksy) $ conda install -c conda-forge r-mclust
 
-.. autoexception:: lumache.InvalidKindError
+Clone the BANKSY source code 
+----------------
+Retrieve the BANKSY source code from github:
 
-For example:
+.. code-block:: console
 
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+   (banksy) $ git clone https://github.com/prabhakarlab/Banksy_py

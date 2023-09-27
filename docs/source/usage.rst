@@ -42,3 +42,7 @@ Retrieve the BANKSY source code from github:
 .. code-block:: console
 
    (banksy) $ git clone https://github.com/prabhakarlab/Banksy_py
+
+Get started with some examples
+----------------
+Users can get started by looking through a few examples here: 

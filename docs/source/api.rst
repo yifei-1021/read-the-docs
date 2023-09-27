@@ -1,7 +1,7 @@
 Useful functions 
 ===================================
 
-Functions under banksy.initialize_banksy
+Functions under **banksy.initialize_banksy**
 -------
 **initialize_banksy**: ``initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str], num_neighbours: int = 15, nbr_weight_decay: str = 'scaled_gaussian', max_m: int = 1,plt_edge_hist: bool = True, plt_nbr_weights: bool = True,plt_agf_angles: bool = False, plt_theta: bool = True ) -> dict:`` 
 
@@ -64,14 +64,10 @@ Functions under banksy.embed_banksy
 
         ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
-Functions under ``utils.umap_pca``
+Functions under **utils.umap_pca**
 -------
 
-**pca_umap**: ``pca_umapbanksy_dict: dict,
-                  pca_dims: List[int] = [20,],
-                  plt_remaining_var: bool = True,
-                  add_umap: bool = False,
-                  **kwargs) -> Tuple[dict, np.ndarray]`` 
+**pca_umap**: ``pca_umap(banksy_dict: dict,pca_dims: List[int] = [20,], plt_remaining_var: bool = True, add_umap: bool = False, **kwargs) -> Tuple[dict, np.ndarray]`` 
     '''
     PCA_UMAP first applies dimensionality reduction via PCA,
     then applies UMAP to cluster the groups

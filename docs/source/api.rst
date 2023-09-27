@@ -9,28 +9,28 @@ Under **banksy.initialize_banksy** module
     This is the main Function that initializes the BANKSY Object as a dictionary
         
     **Input Args**:
-        ``adata`` (AnnData): AnnData object containing the data matrix.
+        ``adata (AnnData)``: AnnData object containing the data matrix.
 
-        ``coord_keys`` (Tuple[str]): A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+        ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
     
-        ``num_neighbours`` (int) a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
+        ``num_neighbours (int)`` a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
     
-        ``nbr_weight_decay`` (str): Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
+        ``nbr_weight_decay (str)``: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
     
-        ``max_m`` (int): Maximum order of azimuthal gabor filter, we use a default of 1.
+        ``max_m (int)``: Maximum order of azimuthal gabor filter, we use a default of 1.
     
         
     **Optional Args**:
-        ``plt_edge`` (bool): Visualize the edge histogram*
+        ``plt_edge (bool)``: Visualize the edge histogram*
     
-        ``plt_weight`` (bool): Visualize the weights graph
+        ``plt_weight (bool)``: Visualize the weights graph
     
-        ``plt_agf_weights`` (bool): Visualize the AGF weights
+        ``plt_agf_weights (bool)``: Visualize the AGF weights
     
-        ``plt_theta`` (bool): Visualize angles around a random cell
+        ``plt_theta (bool)``: Visualize angles around a random cell
 
     **Returns**:
-        ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+        ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
 
 Under **banksy.embed_banksy** module
@@ -40,30 +40,30 @@ Under **banksy.embed_banksy** module
     Creates the banksy matrices with the set hyperparameters given. Stores the computed banksy matrices in the ``banksy_dict`` object, also returns the *last* ``banksy matrix`` that was computed
         
     **Input Args**:
-        ``adata`` (AnnData): AnnData object containing the data matrix
+        ``adata (AnnData)``: AnnData object containing the data matrix
 
-        ``banksy_dict`` (dict): The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
+        ``banksy_dict (dict)``: The banksy_dict object generated from ``initialize_banksy`` function. Note that this function also returns the same ``banksy_dict`` object, it appends computed ``banksy_matrix`` for each hyperparameter under ``banksy_dict[nbr_weight_decay][lambda_param]``.
     
-        ``lambda_list`` (List[int]): A list of ``lambda`` parameters that the users can specify. We recommend ``lambda = 0.2`` for cell-typing and ``lambda = 0.8`` for domain segemntation. 
+        ``lambda_list (List[int])``: A list of ``lambda`` parameters that the users can specify. We recommend ``lambda = 0.2`` for cell-typing and ``lambda = 0.8`` for domain segemntation. 
     
-        ``max_m`` (int): The maximum order of the AGF transform. 
+        ``max_m (int)``: The maximum order of the AGF transform. 
     
         
     **Optional Args**:
-        ``plot_std`` (bool): Visualize the standard  deivation per gene in the dataset, Defaults to ``False``.
+        ``plot_std (bool)``: Visualize the standard  deivation per gene in the dataset, Defaults to ``False``.
 
-        ``save_matrix`` (bool): Option to save all ``banksy_matrix`` generated as a ``csv`` file named ``f"adata_{nbr_weight_decay}_l{lambda_param}_{time_str}.csv"``. Defaults to ``False``.
+        ``save_matrix (bool)``: Option to save all ``banksy_matrix`` generated as a ``csv`` file named ``f"adata_{nbr_weight_decay}_l{lambda_param}_{time_str}.csv"``. Defaults to ``False``.
 
-        ``save_folder`` (bool): Path to folder for saving the ``banksy_matrix``. Defaults to ``./data``.
+        ``save_folder (bool)``: Path to folder for saving the ``banksy_matrix``. Defaults to ``./data``.
     
-        ``variance_balance`` (bool): Balance the variance between the ``gene-expression``, ``neighboorhood`` and ``AGF`` matrices. Defaults to False.
+        ``variance_balance (bool)``: Balance the variance between the ``gene-expression``, ``neighboorhood`` and ``AGF`` matrices. Defaults to False.
     
-        ``plt_theta`` (bool): Visualize angles around a random cell
+        ``plt_theta (bool)``: Visualize angles around a random cell
 
     **Returns**:
-        ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+        ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
-        ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
+        ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
 Under **utils.umap_pca** module
 -------
@@ -73,18 +73,18 @@ Under **utils.umap_pca** module
     Applies dimensionality reduction via PCA (which is used for clustering), optionally applies UMAP to cluster the groups. Note that UMAP is used for visualization.
 
     **Args**:
-        ``banksy_dict`` (dict): The processing dictionary containing info about the banksy matrices.
+        ``banksy_dict (dict)``: The processing dictionary containing info about the banksy matrices.
     
-        pca_dims (List of integers): A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
+        ``pca_dims (List of integers)``: A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
 
-        ``plt_remaining_var`` (bool): generate a scree plot of remaining variance. Defaults to False.
+        ``plt_remaining_var (bool)``: generate a scree plot of remaining variance. Defaults to False.
 
-        ``add_umap`` (bool): Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
+        ``add_umap (bool)``: Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
 
     **Returns**:       
-        ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+        ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 
-        ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
+        ``banksy_matrix (np.ndarray)``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
 Under **banksy.cluster_methods** module
 -------
@@ -94,7 +94,7 @@ Under **banksy.cluster_methods** module
     Main driver function that runs Leiden partition across the banksy matrices stored in banksy_dict. See the original leiden package: https://leidenalg.readthedocs.io/en/stable/intro.html
 
     **Args**:
-        ``banksy_dict`` (dict): The processing dictionary containing:
+        ``banksy_dict (dict)``: The processing dictionary containing:
 
         |__ nbr weight decay
 
@@ -112,17 +112,17 @@ Under **banksy.cluster_methods** module
         
         ``match_labels (bool)``: Determines if labels are kept consistent across different hyperparameter settings,  default = True.
 
-        ``annotations``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
+        ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
 
     Optional args (kwargs):
         Other parameters to the Leiden Partition:
 
-        shared_nn_max_rank (int), default = 3
+        ``shared_nn_max_rank (int)``, default = 3
 
-        shared_nn_min_shared_nbrs (int), default = 5
+        ``shared_nn_min_shared_nbrs (int)``, default = 5
     
     Returns:
-        results_df (pd.DataFrame): A pandas dataframe containing the results of the partition.
+        ``results_df (pd.DataFrame)``: A pandas dataframe containing the results of the partition.
 
         The results can be accessed via: 
             
@@ -152,29 +152,29 @@ Under **banksy.plot_banksy** module
     Plot and visualize the results of Banksy, including the full-figure.
 
     **Args**:
-        ``results_df`` (pd.DataFrame): DataFrame containing all the results after running ``leiden`` clustering algorithm.
+        ``results_df (pd.DataFrame)``: DataFrame containing all the results after running ``leiden`` clustering algorithm.
 
-        ``weight_graph``: weight_graph object in a dictionary
+        ``weight_graph (csc_matrix)``: weight_graph object in a dictionary
 
-        ``max_num_labels`` (int): Maximum number of labels
+        ``max_num_labels (int)``: Maximum number of labels
 
-        ``match_labels`` (bool): If the match labels options was previously indicated. THe outpug figures will match the clusters generated from BANKSY using different hypeparameters.
+        ``match_labels (bool)``: If the match labels options was previously indicated. THe outpug figures will match the clusters generated from BANKSY using different hypeparameters.
 
-        ``max_num_labels`` (int): Number of labels used to match labels (if ``match_labels=True``).
+        ``max_num_labels (int)``: Number of labels used to match labels (if ``match_labels=True``).
 
-        ``coord_keys`` (Tuple(str)): keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm``. 
+        ``coord_keys (Tuple(str))``: keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm``. 
 
     **Optional args**:
 
-        ``save_fig`` (bool): Save the figure containing clusters generated by BANKSY. All figure are saved via the name ``f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}".png``
+        ``save_fig (bool)``: Save the figure containing clusters generated by BANKSY. All figure are saved via the name ``f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}".png``
         
-        ``save_fullfig`` (bool): Save full figure, including UMAP and PCA plots along with clusters.
+        ``save_fullfig (bool)``: Save full figure, including UMAP and PCA plots along with clusters.
 
-        ``c_map`` (str): Colour map used for clustering, such as ``tab20``
+        ``c_map (str)``: Colour map used for clustering, such as ``tab20``
 
-        ``save_all_h5ad`` (bool): to save a copy of the temporary anndata object as ``.h5ad`` format
+        ``save_all_h5ad (bool)``: to save a copy of the temporary anndata object as ``.h5ad`` format
 
-        ``file_path`` (str): file path for saving the output figure/files. default file path is 'data'
+        ``file_path (str)``: file path for saving the output figure/files. default file path is 'data'
     
     **Returns**:
         The main figure for visualization using banksy

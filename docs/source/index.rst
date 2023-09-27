@@ -15,6 +15,9 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-   usage
-   api
+   notebooks/slideseqv1_analysis.ipynb
+   notebooks/slideseqv2_analysis.ipynb
+   notebooks/starmap_analysis.ipynb

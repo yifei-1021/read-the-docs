@@ -16,7 +16,7 @@ Documentation for ``banksy_py`` package
     plt_agf_angles: bool = False,  
     plt_theta: bool = True ) -> dict: 
 
-end
+..
     **Input Args**:
         ``adata (AnnData)``: AnnData object containing the data matrix.
 

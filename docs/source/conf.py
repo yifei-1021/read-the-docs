@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'BANKSY documentation (test)'
+project = 'BANKSY_py documentation'
 copyright = 'Genome Institue of Singapore'
 author = 'Nigel Chou, Yue Yifei'
 

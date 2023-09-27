@@ -72,7 +72,7 @@ Functions under **utils.umap_pca**
     '''
     PCA_UMAP applies dimensionality reduction via PCA (which is used for clustering), optionally applies UMAP to cluster the groups. Note that UMAP is used for visualization.
 
-    Args:
+    **Args**:
         banksy_dict (dict): The processing dictionary containing info about the banksy matrices.
     
         pca_dims (List of integers): A list of integers which the PCA will reduce to. For example, specifying `pca_dims = [10,20]` will generate two sets of reduced `pca_embeddings` which can be accessed by first retreiving the adata object: `` adata = banksy_dictbanksy_dict[{nbr_weight_decay}][{lambda_param}]["adata"]``. Then taking the pca embedding from ``pca_embeddings = adata.obsm[reduced_pc_{pca_dim}]``. Defaults to ``[20]``
@@ -80,7 +80,7 @@ Functions under **utils.umap_pca**
         plt_remaining_var (bool): generate a scree plot of remaining variance. Defaults to False.
 
         add_umap (bool): Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
-    
+
     **Returns**:       
         ``banksy_dict`` (dict): A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
 

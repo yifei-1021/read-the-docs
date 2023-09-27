@@ -2,12 +2,13 @@ Useful functions
 ===================================
 
 Under the main ``banksy`` module
---------
+
 
 ``banksy.initialize_banksy``
 
-``banksy.embed_banksy`` 
-initialize_banksy(adata: anndata.AnnData,
+Under banksy.embed_banksy
+-------
+`` initialize_banksy(adata: anndata.AnnData,
                       coord_keys: Tuple[str],
                       num_neighbours: int = 15,
                       nbr_weight_decay: str = 'scaled_gaussian',
@@ -15,7 +16,7 @@ initialize_banksy(adata: anndata.AnnData,
                       plt_edge_hist: bool = True,
                       plt_nbr_weights: bool = True,
                       plt_agf_angles: bool = False,
-                      plt_theta: bool = True ) -> dict:
+                      plt_theta: bool = True ) -> dict:`` 
 
 This is the main Function that initializes the BANKSY Object as a dictionary
     

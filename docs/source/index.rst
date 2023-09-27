@@ -18,7 +18,7 @@ Contents
    :maxdepth: 1
 
    installation
-   notebooks/slideseqv1_analysis
-   notebooks/slideseqv2_analysis
-   notebooks/starmap_analysis
+   slideseqv1_analysis
+   slideseqv2_analysis
+   starmap_analysis
    api

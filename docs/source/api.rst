@@ -1,11 +1,6 @@
 Useful functions 
 ===================================
 
-Under the main ``banksy`` module
-
-
-``banksy.initialize_banksy``
-
 Functions under banksy.initialize_banksy
 -------
 **initialize_banksy**: ``initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str], num_neighbours: int = 15, nbr_weight_decay: str = 'scaled_gaussian', max_m: int = 1,plt_edge_hist: bool = True, plt_nbr_weights: bool = True,plt_agf_angles: bool = False, plt_theta: bool = True ) -> dict:`` 
@@ -69,6 +64,29 @@ Functions under banksy.embed_banksy
 
         ``banksy_matrix`` (dict): The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
 
+Functions under ``utils.umap_pca``
+-------
+
+**pca_umap**: ``pca_umapbanksy_dict: dict,
+                  pca_dims: List[int] = [20,],
+                  plt_remaining_var: bool = True,
+                  add_umap: bool = False,
+                  **kwargs) -> Tuple[dict, np.ndarray]`` 
+    '''
+    PCA_UMAP first applies dimensionality reduction via PCA,
+    then applies UMAP to cluster the groups
+
+    Args:
+        banksy_dict (dict): The processing dictionary containing info about the banksy matrices
+    
+    Optional Arg:
+        pca_dims (List of integers): A list of integers which the PCA will reduce to
+    
+    Variable Args (kwargs):
+        figsize (tuple of integers): A tuple for adjusting figure size
+
+    Returns: Plot of remaining variance 
+    '''
 
 .. autosummary::
    :toctree: generated

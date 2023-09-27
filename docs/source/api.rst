@@ -94,7 +94,7 @@ Documentation for ``banksy_py`` package
    
      ``annotations (str)``: If manual annotations for the labels are provided under ``adata.obsm[{annotation}]". If so, we also compute the ``adjusted rand index`` for BANKSY's performance under ``results_df[param_name]['ari']`` 
 
-    **Optional args (kwargs)**: other parameters to the Leiden Partition:
+    **Optional args**: other parameters to the Leiden Partition:
 
      ``shared_nn_max_rank (int)``, default = 3
 

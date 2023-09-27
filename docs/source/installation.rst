@@ -45,4 +45,4 @@ Retrieve the BANKSY source code from github:
 
 Get started with some examples
 ----------------
-Users can get started by looking through a few examples here: 
+Users can get started by looking through a few examples here: :doc:`slideseqv1 <../slideseqv1.ipynb>` 

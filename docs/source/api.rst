@@ -150,7 +150,7 @@ Documentation for ``banksy_py`` package
    :param Union[csc_matrix, csr_matrix] weight_graph: ``weight_graph`` generated from ``initalize_banksy``.
    :param str c_map: Color map for plotting figure if required. We recommend ``tab20``.
    :param bool match_labels:  If the match labels options was previously indicated. THe output figures will match the clusters generated from BANKSY using different hypeparameters.
-   :param str  coord_keys (Tuple[str]): keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm`` 
+   :param Tuple[str] coord_keys: keys to access the coordinates for ``x``, ``y`` and ``xy`` accessed under ``adata.obsm`` 
 
 
    :param int max_num_labels: umber of labels used to match labels (if ``match_labels=True``). Defaults to 20.

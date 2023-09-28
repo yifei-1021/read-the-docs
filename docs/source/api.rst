@@ -6,40 +6,21 @@ Documentation for ``banksy_py`` package
 
 .. py:function:: initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict: 
 
-   This is the main Function that initializes the **banksy_dict** object as a dictionary
+   Initializes the ``banksy_dict`` dictionary containing the weights graphs.
 
    :param AnnData adata: AnnData object containing the data matrix.
-   :param int num_neighbours: The recipient of the message
-   :param str message_body: The body of the message
-   :param priority: The priority of the message, can be a number 1-5
+   :param Tuple[str] coord_keys: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
+   :param int num_neighbours: (a.k.a k_geom) The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15.
+   :param str nbr_weight_decay: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
+   :param int max_m: TMaximum order of azimuthal gabor filter, we use a default of max_m = 1.
 
-   :type priority: integer or None
-   :return: the message id
-   :rtype: int
+   :param bool plt_edge: Visualize the edge histogram
+   :param bool plt_weight: Visualize the weights graph
+   :param bool plt_agf_weights: Visualize the AGF weights
+   :param bool plt_theta: Visualize angles around a random cell
 
-**Input Args**:
-   ``adata (AnnData)``: 
-   
-   ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
-   
-   ``num_neighbours (int)`` a.k.a k_geom: The number of neighbours in which the edges, weights and theta graph are constructed. By default, we use k_geom = 15 as we have done for all results in our manuscript.
-   
-   ``nbr_weight_decay (str)``: Type of neighbourhood decay function, can be ``scaled_gaussian`` or ``reciprocal``. By default, we use ``scaled_gaussian``.
-   
-   ``max_m (int)``: Maximum order of azimuthal gabor filter, we use a default of 1.
-
-
-**Optional Args**:
-   ``plt_edge (bool)``: Visualize the edge histogram*
-   
-   ``plt_weight (bool)``: Visualize the weights graph
-   
-   ``plt_agf_weights (bool)``: Visualize the AGF weights
-   
-   ``plt_theta (bool)``: Visualize angles around a random cell
-   
-**Returns**:
-   ``banksy_dict (dict)``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+   :return: banksy_dict: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+   :rtype: dict
    
 
 ``banksy.embed_banksy`` module

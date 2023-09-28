@@ -206,8 +206,8 @@ Documentation for ``banksy_py`` package
    :param bool plt_remaining_var: Generate a scree plot of remaining variance. Defaults to ``False``.
    :param bool add_umap: Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
 
-   :return: ``banksy_dict`` - A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
-   :return: ``banksy_matrix``- The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
+   :return: ``banksy_dict``: A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+   :return: ``banksy_matrix`: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
    :rtype: ``Tuple[dict, np.ndarray]``
       
 

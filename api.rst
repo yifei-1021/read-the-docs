@@ -190,7 +190,7 @@ Documentation for ``banksy_py`` package
    :param Optional[bool] add_nonspatial: Whether to add results for ``nonspatial`` clustering, defaults to ``True``
    :param Optional[int] partition_seed:  Seed used for Clustering algorithm, default = ``1234``.
    
-   :return: ``results_df`` - Pandas dataframe containing the results of the from running ``banksy`` using various parameters.
+   :return: ``results_df``: Pandas dataframe containing the results of the from running ``banksy`` using various parameters.
    :rtype: ``pd.DataFrame``
 
 
@@ -213,7 +213,7 @@ Documentation for ``banksy_py`` package
 ``utils.refine_clusters`` module
 -------
 
-.. py:function:: refine_clusters(adata: anndata.AnnData, results_df: pd.DataFrame, coord_keys: tuple, color_list: list = spagcn_color, savefig: bool = False, output_folder: str = "",  refine_method: str = "once", refine_iterations: int = 1, annotation_key: str = "manual_annotations", num_neigh: int = 6, verbose: bool = False) -> pd.DataFrame:
+.. py:function:: refine_clusters(adata: anndata.AnnData, results_df: pd.DataFrame, coord_keys: tuple, color_list: list = spagcn_color, savefig: bool = False, output_folder: str = "",  refine_method: str = "once", refine_iterations: int = 1, annotation_key: str = "manual_annotations", num_neigh: int = 6, verbose: bool = False) -> pd.DataFrame
    
    Function to refine (a.k.a ``label smoothening``) predicted labels based on nearest neighbours based on ``SpaGCN``'s implementation of this ``label smoothening`` procedure: https://github.com/jianhuupenn/SpaGCN
 
@@ -229,7 +229,7 @@ Documentation for ``banksy_py`` package
    :param Optional[int] num_neigh: Number of nearest-neighbours in which refinement is conducted over. By default, we use ``num_neigh = 6`` same as ``SpaGCN``'s implementation.
    :param Optional[bool] verbose: Whether to print steps conducted during each iteration process.
 
-   :return: ``result_df``: A DataFrame containing the results.
+   :return: ``results_df``: Pandas dataframe containing the results of the from running ``banksy`` using various parameters.
    :rtype: ``pd.DataFrame``
 
 .. autosummary::

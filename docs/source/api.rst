@@ -3,15 +3,23 @@ Documentation for ``banksy_py`` package
 
 ``banksy.initialize_banksy`` module
 -------
-**initialize_banksy**: This is the main Function that initializes the **banksy_dict** object as a dictionary
+**initialize_banksy**: 
 
-.. code-block:: python
+.. py:function:: initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict: 
 
-   initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict: 
-   
-   
+   This is the main Function that initializes the **banksy_dict** object as a dictionary
+
+   :param AnnData adata: AnnData object containing the data matrix.
+   :param int num_neighbours: The recipient of the message
+   :param str message_body: The body of the message
+   :param priority: The priority of the message, can be a number 1-5
+
+   :type priority: integer or None
+   :return: the message id
+   :rtype: int
+
 **Input Args**:
-   ``adata (AnnData)``: AnnData object containing the data matrix.
+   ``adata (AnnData)``: 
    
    ``coord_keys (Tuple[str])``: A tuple containing 3 keys to access the `x`, `y` and `xy` coordinates of the cell positions under ``data.obs``. For example, ``coord_keys = ('x','y','xy')``, in which ``adata.obs['x']`` and ``adata.obs['y']`` are 1-D numpy arrays, and ``adata.obs['xy']`` is a 2-D numpy array.
    

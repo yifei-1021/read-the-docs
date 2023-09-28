@@ -80,9 +80,9 @@ Documentation for ``banksy_py`` package
 
 .. note::
 
-   Using ``run_Leiden_partition``, the results in ``results_df`` can be accessed via: 
-      
-      ``param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}"`` # A unique id for current hyperparameters
+   Using ``run_Leiden_partition``, the results in ``results_df`` can be accessed via ``param_str`` -  unique id for parameters. 
+   ``param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_r{resolution:0.2f}"`` 
+
       ``results_df[param_str] = {``
             ``"decay": nbr_weight_decay,`` - Type of weight decay function used
             ``"lambda_param": lambda_param,`` - Lambda Parameter specified
@@ -109,9 +109,9 @@ Documentation for ``banksy_py`` package
 
 .. note::
 
-   Using ``run_mclust_partition``, the results in ``results_df`` can be accessed via: 
+   Using ``run_mclust_partition``, the results in ``results_df`` can be accessed via ``param_str`` -  unique id for parameters.
+   ``param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_labels{num_labels:0.2f}_mclust"`` 
 
-      ``param_str = f"{nbr_weight_decay}_pc{pca_dim}_nc{lambda_param:0.2f}_labels{num_labels:0.2f}_mclust"`` # A unique id for current hyperparameters
       ``results_df[param_str] = {``
             ``"decay": nbr_weight_decay,`` - Type of weight decay function used
             ``"lambda_param": lambda_param,`` - Lambda Parameter specified

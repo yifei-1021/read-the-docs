@@ -4,7 +4,7 @@ Documentation for ``banksy_py`` package
 ``banksy.initialize_banksy`` module
 -------
 
-.. py:function:: initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict: 
+.. py:function:: initialize_banksy(adata: anndata.AnnData, coord_keys: Tuple[str],   num_neighbours: int = 15,   nbr_weight_decay: str = 'scaled_gaussian',   max_m: int = 1,  plt_edge_hist: bool = True, plt_nbr_weights: bool = True,  plt_agf_angles: bool = False,  plt_theta: bool = True ) -> dict
 
    Initializes the ``banksy_dict`` dictionary containing the weights graphs.
 
@@ -25,7 +25,7 @@ Documentation for ``banksy_py`` package
 
 ``banksy.embed_banksy`` module
 -------
-.. py:function:: generate_banksy_matrix(adata: anndata.AnnData, banksy_dict: dict, lambda_list: List[float], max_m: int, plot_std: bool = False, save_matrix: bool = False, save_folder: str = './data', variance_balance: bool = False, verbose: bool = True) -> Tuple[dict, np.ndarray]:
+.. py:function:: generate_banksy_matrix(adata: anndata.AnnData, banksy_dict: dict, lambda_list: List[float], max_m: int, plot_std: bool = False, save_matrix: bool = False, save_folder: str = './data', variance_balance: bool = False, verbose: bool = True) -> Tuple[dict, np.ndarray]
 
    Creates the banksy matrices with the set hyperparameters given. Stores the computed banksy matrices in the ``banksy_dict`` object, also returns the *last* ``banksy matrix`` that was computed.
 
@@ -61,7 +61,7 @@ Documentation for ``banksy_py`` package
 ``banksy.cluster_methods`` module
 -------
 
-.. py:function:: run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict:
+.. py:function:: run_Leiden_partition(banksy_dict: dict, resolutions: list, num_nn: int = 50, num_iterations: int = -1, partition_seed: int = 1234, match_labels: bool = True, annotations = None, max_labels: int = None,**kwargs) -> dict
 
    Main driver function that runs Leiden partition across the banksy matrices stored in ``banksy_dict``. We use the original implementation from the ``leiden`` package: https://leidenalg.readthedocs.io/en/stable/intro.html
  
@@ -105,7 +105,7 @@ Documentation for ``banksy_py`` package
       ``}``
 
 
-.. py:function:: run_mclust_partition(banksy_dict: dict, partition_seed: int = 1234, annotations = None, num_labels: int = None, **kwargs  ) -> dict:
+.. py:function:: run_mclust_partition(banksy_dict: dict, partition_seed: int = 1234, annotations = None, num_labels: int = None, **kwargs  ) -> dict
 
    Main driver function that runs ``mclust`` partition across the banksy matrices stored in banksy_dict. Note that we need to specify the number of clusters  ``num_labels`` for mclust, which is applicable for datasets in we know the number of clusters to look for (e.g., DLPFC).  This is based on ``STAGATE``'s implementation of the ``mclust`` package.  see https://github.com/zhanglabtools/STAGATE/blob/main/STAGATE/utils.py
  
@@ -169,7 +169,7 @@ Documentation for ``banksy_py`` package
 ``banksy.run_banksy`` module
 -------
 
-.. py:function:: run_banksy_multiparam(adata: anndata.AnnData, banksy_dict: dict, lambda_list: List[int], resolutions: List[int], color_list: Union[List, str], max_m: int, filepath: str, key: Tuple[str], match_labels: bool = False, pca_dims: List[int] = [20, ], savefig: bool = True, annotation_key: str = "cluster_name", max_labels: int = None, variance_balance: bool = False, cluster_algorithm: str = 'leiden', partition_seed: int = 1234, add_nonspatial: bool = True, **kwargs) -> None
+.. py:function:: run_banksy_multiparam(adata: anndata.AnnData, banksy_dict: dict, lambda_list: List[int], resolutions: List[int], color_list: Union[List, str], max_m: int, filepath: str, key: Tuple[str], match_labels: bool = False, pca_dims: List[int] = [20, ], savefig: bool = True, annotation_key: str = "cluster_name", max_labels: int = None, variance_balance: bool = False, cluster_algorithm: str = 'leiden', partition_seed: int = 1234, add_nonspatial: bool = True, **kwargs) -> pd.DataFrame
 
    Combines the (1) ``generate_banksy_matrix``, (2) ``pca_umap``, (3) ``run_cluster_partition`` and (4) ``plot_banksy`` functions to run banksy for multiple parameters (``lambda``, ``resolution`` and ``pca_dims``), and generate its figure in one step. Note the user still has to initalize the ``banksy_dict`` via ``initialize_banksy``.
  
@@ -230,7 +230,7 @@ Documentation for ``banksy_py`` package
    :param Optional[str] annotation_key: The key in which the ground truth annotations are accessed under ``adata.obs[annotation_key]``. If so, the ``ari`` of the refined clusters are also calculated. If no ground truth is present, then set ``annotation_key = None``.
    :param Optional[int] num_neigh: Number of nearest-neighbours in which refinement is conducted over. By default, we use ``num_neigh = 6`` same as ``SpaGCN``'s implementation.
    :param Optional[bool] verbose: Whether to print steps conducted during each iteration process.
-   :return : A DataFrame containing the results.
+   :return: ``result_df``: A DataFrame containing the results.
    :rtype: ``pd.DataFrame``
 
 .. autosummary::

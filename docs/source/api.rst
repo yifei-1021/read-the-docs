@@ -206,8 +206,8 @@ Documentation for ``banksy_py`` package
    :param bool plt_remaining_var: Generate a scree plot of remaining variance. Defaults to ``False``.
    :param bool add_umap: Whether to apply ``UMAP`` for visualization later. Note this is required for plotting the ``full-figure`` option used in ``plot_results``.
 
-   :return ``banksy_dict``:  A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
-   :return ``banksy_matrix``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
+   :return: ``banksy_dict``:  A dictionary object containing the graph of weights obtained from the neigbhourhood weight decay function. The graph data can be accessed via ``banksy['weights']``
+   :return: ``banksy_matrix``: The last ``banksy_matrix`` generated, useful if the use is simply running one set of parameters.
    :rtype: ``Tuple[dict, np.ndarray]``
       
 
@@ -230,7 +230,7 @@ Documentation for ``banksy_py`` package
    :param Optional[str] annotation_key: The key in which the ground truth annotations are accessed under ``adata.obs[annotation_key]``. If so, the ``ari`` of the refined clusters are also calculated. If no ground truth is present, then set ``annotation_key = None``.
    :param Optional[int] num_neigh: Number of nearest-neighbours in which refinement is conducted over. By default, we use ``num_neigh = 6`` same as ``SpaGCN``'s implementation.
    :param Optional[bool] verbose: Whether to print steps conducted during each iteration process.
-   :return ``results_df``: DataFrame Object containing the results.
+   :return: ``results_df``: DataFrame Object containing the results.
    :rtype: ``pd.DataFrame``
 
 .. autosummary::
